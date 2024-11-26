@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         int fontSize = Integer.parseInt(font_size);
-        WordInfo wordInfo = WordManager.getInstance().getWordInfoEx(fontSize, content);
+        WordInfo wordInfo = WordManager.getInstance().getWordInfo(fontSize, content);
 
         StringBuilder builder = new StringBuilder();
         textView.setText("字的宽度：" + wordInfo.getWidth() + "高度：" + wordInfo.getRows() + "\n");
@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         int fontSize = Integer.parseInt(font_size);
-        WordInfo wordInfo = WordManager.getInstance().getWordInfo(fontSize, content);
+        WordInfo wordInfo = WordManager.getInstance().getWordInfoEx(fontSize, content);
         StringBuilder builder = new StringBuilder();
         textView.setText("字的宽度：" + wordInfo.getWidth() + "高度：" + wordInfo.getRows() + "\n");
 

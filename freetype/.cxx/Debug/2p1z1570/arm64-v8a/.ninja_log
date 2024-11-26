@@ -54,3 +54,5 @@
 620	732	1732608250	../../../../build/intermediates/cxx/Debug/2p1z1570/obj/arm64-v8a/libfreetype.so	e5def0366694c375
 1	476	1732608276	CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o	70c66f2d39c0164f
 476	582	1732608277	../../../../build/intermediates/cxx/Debug/2p1z1570/obj/arm64-v8a/libfreetype.so	e5def0366694c375
+1	1939	1732610929	CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o	70c66f2d39c0164f
+1940	2070	1732610929	../../../../build/intermediates/cxx/Debug/2p1z1570/obj/arm64-v8a/libfreetype.so	e5def0366694c375
