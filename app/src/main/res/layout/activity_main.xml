@@ -11,11 +11,13 @@
 
         <EditText
             android:id="@+id/et"
+            android:text="我"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入你要提取的字" />
 
         <EditText
+            android:text="16"
             android:id="@+id/et_font_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,6 +52,15 @@
             android:text="提取字的信息" />
 
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:onClick="getWordInfoEx"
+            android:text="提取字的信息Ex" />
+
+
         <TextView
             android:id="@+id/tv"
             android:layout_width="match_parent"
@@ -60,6 +71,7 @@
 
         <ImageView
             android:id="@+id/iv"
+            android:background="#ff000000"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginTop="5dp" />

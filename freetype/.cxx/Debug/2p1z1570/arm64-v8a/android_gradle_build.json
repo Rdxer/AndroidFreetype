@@ -1,0 +1,38 @@
+{
+  "buildFiles": [
+    "/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/lxf/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/Debug/2p1z1570/arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/lxf/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/Debug/2p1z1570/arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "freetype::@6890427a1f51a3e7e1df": {
+      "toolchain": "toolchain",
+      "abi": "arm64-v8a",
+      "artifactName": "freetype",
+      "output": "/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/build/intermediates/cxx/Debug/2p1z1570/obj/arm64-v8a/libfreetype.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "toolchain": {
+      "cCompilerExecutable": "/Users/lxf/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang",
+      "cppCompilerExecutable": "/Users/lxf/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.xian.freetype.word.NdkFreeType;
 import com.xian.freetype.word.WordInfo;
 import com.xian.freetype.word.WordManager;
 
@@ -57,6 +58,60 @@ public class MainActivity extends AppCompatActivity {
      *
      */
     public void getWordInfo(View view) {
+        if (!isRequestPermissionOk) {
+            Toast.makeText(this, "请打开读写权限", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String content = editText.getText().toString();
+
+        if (TextUtils.isEmpty(content)) {
+            Toast.makeText(this, "提取的字不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String font_size = et_font_size.getText().toString();
+        if (TextUtils.isEmpty(content)) {
+            Toast.makeText(this, "字的大小不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (content.length() > 1) {
+            Toast.makeText(this, "只支持一个字的提取", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int fontSize = Integer.parseInt(font_size);
+        WordInfo wordInfo = WordManager.getInstance().getWordInfoEx(fontSize, content);
+
+        StringBuilder builder = new StringBuilder();
+        textView.setText("字的宽度：" + wordInfo.getWidth() + "高度：" + wordInfo.getRows() + "\n");
+
+        byte[][] arr = WordManager.getInstance().stringToLattice(content, fontSize, 0);
+
+
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[0].length; j++) {
+                if (arr[i][j] == 1) {
+                    builder.append("1");
+                } else {
+                    builder.append("0");
+                }
+            }
+            builder.append("\n");
+        }
+
+        Log.i("点阵", builder.toString());
+
+    }
+
+
+    /**
+     * 获取字的信息
+     *
+     */
+    public void getWordInfoEx(View view) {
         if (!isRequestPermissionOk) {
             Toast.makeText(this, "请打开读写权限", Toast.LENGTH_SHORT).show();
             return;

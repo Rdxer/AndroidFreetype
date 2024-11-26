@@ -277,4 +277,11 @@ public class WordManager {
         return NdkFreeType.FT_GET_Word_Info(font_size, s.codePointAt(0));
     }
 
+    public WordInfo getWordInfoEx(int font_size, String s) {
+        if (TextUtils.isEmpty(s)) return null;
+        if (s.length() > 1) {
+            throw new IllegalArgumentException("只支持一个字提取");
+        }
+        return NdkFreeType.FT_GET_Word_Info_ex(font_size, s.codePointAt(0));
+    }
 }
