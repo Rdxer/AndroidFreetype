@@ -1,0 +1,7 @@
+Executable : /Users/lxf/Library/Android/sdk/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/armeabi-v7a
+freetype
+jvmArgs : 
+

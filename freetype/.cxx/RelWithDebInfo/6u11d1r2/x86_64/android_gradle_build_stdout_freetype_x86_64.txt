@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/x86_64'
+ninja: no work to do.

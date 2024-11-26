@@ -37,6 +37,13 @@ public class NdkFreeType {
     public static native WordInfo FT_GET_Word_Info(int fontSize, long charCode);
 
 
+    /**
+     * 获取字的信息 Ex
+     *
+     * @param fontSize 字的大小
+     * @param charCode 字符编码
+     * @return
+     */
     public static native WordInfo FT_GET_Word_Info_ex(int fontSize, long charCode);
 
 

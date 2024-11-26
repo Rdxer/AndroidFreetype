@@ -1,0 +1,3 @@
+/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/arm64-v8a/CMakeFiles/freetype.dir

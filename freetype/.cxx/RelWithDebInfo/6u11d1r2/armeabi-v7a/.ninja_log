@@ -1,0 +1,23 @@
+# ninja log v5
+2	161	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftlcdfil.c.o	2612b57473183937
+4	175	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/fttype1.c.o	d994deb7b30fe6d9
+4	177	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftxf86.c.o	906a333bfaa0ef1d
+1	181	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftfstype.c.o	5e15dd77b519b509
+5	193	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftsystem.c.o	e8423788ad86b8ce
+2	259	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftglyph.c.o	7f13c971d351f655
+0	266	1732612596	CMakeFiles/freetype.dir/src/main/jni/src/base/ftbbox.c.o	5c724656c5ae3546
+162	304	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/base/ftinit.c.o	d52816144df399f6
+175	309	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/base/ftgasp.c.o	14a0493a069bb584
+1	387	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/base/ftbitmap.c.o	29158c075bb69468
+310	536	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/psnames/psnames.c.o	48e6eb360b0cea
+193	625	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/smooth/smooth.c.o	24730e15785521e6
+536	649	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o	2157067dff5b0065
+177	820	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/raster/raster.c.o	11e734cfb35f2f23
+3	867	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/base/ftstroke.c.o	9ea515db8b6e6f21
+387	974	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/pshinter/pshinter.c.o	19bcbbf034e53fb7
+259	1163	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/autofit/autofit.c.o	5e93b617d5505722
+181	1176	1732612597	CMakeFiles/freetype.dir/src/main/jni/src/sfnt/sfnt.c.o	66ad8c9a33a42c2c
+304	1334	1732612598	CMakeFiles/freetype.dir/src/main/jni/src/cff/cff.c.o	cf38323e1f457533
+5	1342	1732612598	CMakeFiles/freetype.dir/src/main/jni/src/base/ftbase.c.o	3f65d4510e1ec559
+266	1499	1732612598	CMakeFiles/freetype.dir/src/main/jni/src/truetype/truetype.c.o	5a33b54d8dd6245e
+1499	1559	1732612598	../../../../build/intermediates/cxx/RelWithDebInfo/6u11d1r2/obj/armeabi-v7a/libfreetype.so	cd466393812086d8
