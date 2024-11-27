@@ -1,6 +1,7 @@
 package com.xian.freetypeDemo;
 
 import android.Manifest;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -237,7 +238,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             isRequestPermissionOk = true;
             //simsun.ttc   默认字体  如果想换字体，请用 WordManager.getInstance().init(this,字体路径);
-            WordManager.getInstance().init(this);
+//            WordManager.getInstance().init(this);
+            String fontname = "Unifont点阵黑.ttf";
+//            "Alibaba-PuHuiTi-Bold.ttf"
+            WordManager.getInstance().initByAssets(this,fontname);
         }
     }
 

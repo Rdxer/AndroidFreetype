@@ -1,6 +1,7 @@
 package com.xian.freetype.word;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
@@ -283,5 +284,35 @@ public class WordManager {
             throw new IllegalArgumentException("只支持一个字提取");
         }
         return NdkFreeType.FT_GET_Word_Info_ex(font_size, s.codePointAt(0));
+    }
+
+    public synchronized boolean  initByAssets(Context context,  String path) {
+        this.context = context;
+        this.fontPath = this.context.getCacheDir().getAbsolutePath()+ "/font/" + path;
+        File file = new File(fontPath);
+        try {
+            if (!file.exists()) {
+                File parentFile = file.getParentFile();
+                if (!parentFile.exists()) {
+                    parentFile.mkdirs();
+                }
+            }
+            OutputStream myOutput = new FileOutputStream(file);
+            InputStream myInput = context.getAssets().open(path);
+            byte[] buffer = new byte[1024];
+            int length = myInput.read(buffer);
+            while (length > 0) {
+                myOutput.write(buffer, 0, length);
+                length = myInput.read(buffer);
+            }
+
+            myOutput.flush();
+            myInput.close();
+            myOutput.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return NdkFreeType.FT_Init_FreeType(fontPath);
     }
 }

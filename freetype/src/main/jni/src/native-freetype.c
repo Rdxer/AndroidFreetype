@@ -6,6 +6,9 @@
 
 #define LOG_TAG "FontDecode"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+#define LOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
+//#define LOGI(...)  __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
+
 
 static FT_Library library;
 static FT_Face face;
@@ -166,6 +169,24 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1Destroy_1FreeType(JNIEnv *env, jclas
         FT_Done_FreeType(library);
 }
 
+static char log_buffer[1024];
+static int buffer_length = 0;
+
+void log_message(const char* message) {
+    if (buffer_length + strlen(message) < sizeof(log_buffer)) {
+        strcat(log_buffer, message);
+        buffer_length += strlen(message);
+    } else {
+        __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, "Log buffer overflow!");
+    }
+}
+
+void flush_log() {
+    __android_log_print(ANDROID_LOG_INFO, LOG_TAG, "%s", log_buffer);
+    memset(log_buffer, 0, sizeof(log_buffer)); // Clear buffer
+    buffer_length = 0;
+}
+
 JNIEXPORT jobject JNICALL
 Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jclass instance,
                                                                 jint font_size,
@@ -207,6 +228,19 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
     }
 
     FT_Bitmap bitmap = face->glyph->bitmap;
+
+    LOGE("xxxxxxxxxxxxxxxxxxxxxxxxx\n");
+    LOGE("\n");
+    for (int y = 0; y < bitmap.rows; y++) {
+        for (int x = 0; x < bitmap.width; x++) {
+            uint8_t pixel = (bitmap.buffer[y * bitmap.pitch + (x >> 3)] >> (7 - (x % 8))) & 0x1;
+            log_message(pixel ? "⬛️ " : "⬜️ ");
+        }
+        flush_log();
+//        log_message("\n");
+    }
+//    flush_log();
+    LOGI("xxx1\n");
 
     LOGI("width=%d ", bitmap.width);
     LOGI("rows=%d ", bitmap.rows);

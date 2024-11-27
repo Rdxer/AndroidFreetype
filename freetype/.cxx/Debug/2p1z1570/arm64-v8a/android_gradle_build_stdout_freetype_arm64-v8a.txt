@@ -1,27 +1,27 @@
 ninja: Entering directory `/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/Debug/2p1z1570/arm64-v8a'
 [1/2] Building C object CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o
-../../../../src/main/jni/src/native-freetype.c:17:80: warning: unused parameter 'instance' [-Wunused-parameter]
+../../../../src/main/jni/src/native-freetype.c:20:80: warning: unused parameter 'instance' [-Wunused-parameter]
 Java_com_xian_freetype_word_NdkFreeType_FT_1Init_1FreeType(JNIEnv *env, jclass instance,
                                                                                ^
-../../../../src/main/jni/src/native-freetype.c:104:69: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+../../../../src/main/jni/src/native-freetype.c:107:69: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
     (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
                                                                     ^~~~~~~~~~~~~
-../../../../src/main/jni/src/native-freetype.c:40:81: warning: unused parameter 'instance' [-Wunused-parameter]
+../../../../src/main/jni/src/native-freetype.c:43:81: warning: unused parameter 'instance' [-Wunused-parameter]
 Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info(JNIEnv *env, jclass instance,
                                                                                 ^
-../../../../src/main/jni/src/native-freetype.c:161:71: warning: unused parameter 'env' [-Wunused-parameter]
+../../../../src/main/jni/src/native-freetype.c:164:71: warning: unused parameter 'env' [-Wunused-parameter]
 Java_com_xian_freetype_word_NdkFreeType_FT_1Destroy_1FreeType(JNIEnv *env, jclass type) {
                                                                       ^
-../../../../src/main/jni/src/native-freetype.c:161:83: warning: unused parameter 'type' [-Wunused-parameter]
+../../../../src/main/jni/src/native-freetype.c:164:83: warning: unused parameter 'type' [-Wunused-parameter]
 Java_com_xian_freetype_word_NdkFreeType_FT_1Destroy_1FreeType(JNIEnv *env, jclass type) {
                                                                                   ^
-../../../../src/main/jni/src/native-freetype.c:240:69: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+../../../../src/main/jni/src/native-freetype.c:274:69: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
     (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
                                                                     ^~~~~~~~~~~~~
-../../../../src/main/jni/src/native-freetype.c:187:13: warning: unused variable 'bbox' [-Wunused-variable]
+../../../../src/main/jni/src/native-freetype.c:208:13: warning: unused variable 'bbox' [-Wunused-variable]
     FT_BBox bbox;
             ^
-../../../../src/main/jni/src/native-freetype.c:170:85: warning: unused parameter 'instance' [-Wunused-parameter]
+../../../../src/main/jni/src/native-freetype.c:191:85: warning: unused parameter 'instance' [-Wunused-parameter]
 Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jclass instance,
                                                                                     ^
 8 warnings generated.
