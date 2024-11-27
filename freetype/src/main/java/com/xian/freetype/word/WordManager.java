@@ -286,6 +286,10 @@ public class WordManager {
         return NdkFreeType.FT_GET_Word_Info_ex(font_size, s.codePointAt(0));
     }
 
+    public WordInfo getWordInfoEx(int fontSize, int codePointAt) {
+        return NdkFreeType.FT_GET_Word_Info_ex(fontSize, codePointAt);
+    }
+
     public synchronized boolean  initByAssets(Context context,  String path) {
         this.context = context;
         this.fontPath = this.context.getCacheDir().getAbsolutePath()+ "/font/" + path;
@@ -315,4 +319,5 @@ public class WordManager {
 
         return NdkFreeType.FT_Init_FreeType(fontPath);
     }
+
 }

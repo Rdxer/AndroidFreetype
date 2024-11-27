@@ -13,6 +13,16 @@ public class WordInfo {
     public int bitmap_top;//上行距离
     public byte[] buffer;//数据(默认8位灰度值)
 
+    public int xMin;
+    public int yMin;
+    public int xMax;
+    public int yMax;
+
+//    public int code;
+//    public boolean hasCode;
+//    public int randerSize;
+
+
     public int getRows() {
         return rows;
     }

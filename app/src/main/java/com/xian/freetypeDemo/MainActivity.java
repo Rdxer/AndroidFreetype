@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.xian.freetype.word.NdkFreeType;
 import com.xian.freetype.word.WordInfo;
+import com.xian.freetype.word.WordInfoUtils;
 import com.xian.freetype.word.WordManager;
 
 import static android.content.pm.PackageManager.PERMISSION_GRANTED;
@@ -23,6 +24,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -137,24 +140,38 @@ public class MainActivity extends AppCompatActivity {
         }
 
         int fontSize = Integer.parseInt(font_size);
-        WordInfo wordInfo = WordManager.getInstance().getWordInfoEx(fontSize, content);
-        StringBuilder builder = new StringBuilder();
-        textView.setText("字的宽度：" + wordInfo.getWidth() + "高度：" + wordInfo.getRows() + "\n");
 
-        byte[][] arr = WordManager.getInstance().stringToLattice(content, fontSize, 0);
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] == 1) {
-                    builder.append("1");
-                } else {
-                    builder.append("0");
-                }
-            }
-            builder.append("\n");
+        WordInfo wordInfo1 = WordManager.getInstance().getWordInfoEx(fontSize, content);
+        WordInfoUtils.printMash(wordInfo1);
+        printmash(wordInfo1);
+
+        List<List<Integer>> mash = WordInfoUtils.makeMash(wordInfo1);
+
+        WordInfoUtils.printMash(mash);
+
+        Log.e("TAG", ">>>>>>>>>> getWordInfoEx: " );
+
+        String str = "你好啊！蛤。\"蛤，";
+
+        for (int i = 0; i < str.length(); i++) {
+            int codePointAt = str.codePointAt(i);
+            WordInfo wordInfo = WordManager.getInstance().getWordInfoEx(fontSize, codePointAt);
+            printmash(wordInfo);
         }
 
-        Log.i("点阵", builder.toString());
 
+    }
+
+    private static void printmash(WordInfo wordInfo) {
+        byte[] buffer = wordInfo.getBuffer();
+        for (int y = 0; y < wordInfo.rows; y++) {
+            for (int x = 0; x < wordInfo.width; x++) {
+
+                int pixel = (buffer[y * wordInfo.pitch + (x >> 3)] >> (7 - (x % 8))) & 0x1;
+                System.out.print(pixel != 0  ? "⬛️ " : "⬜️ ");
+            }
+            System.out.print("\n");
+        }
     }
 
 

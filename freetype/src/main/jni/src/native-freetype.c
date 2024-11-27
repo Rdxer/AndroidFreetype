@@ -3,6 +3,16 @@
 //#include FT_FREETYPE_H
 #include <android/log.h>
 #include <freetype/tttags.h>
+//#import "ft2build.h"
+#import <ft2build.h>
+
+// 基础的FreeType 2 API
+#include FT_FREETYPE_H
+
+// 管理Glyph Images
+#include FT_GLYPH_H
+
+
 
 #define LOG_TAG "FontDecode"
 #define LOGI(...) __android_log_print(ANDROID_LOG_INFO, LOG_TAG, __VA_ARGS__)
@@ -192,7 +202,7 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
                                                                 jint font_size,
                                                                 jlong char_index) {
 
-    LOGI("123131313休息休息嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻!\n");
+//    LOGI("123131313休息休息嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻!\n");
 
     if (face == NULL) {
         LOGI("create new face falied!\n");
@@ -229,16 +239,15 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
 
     FT_Bitmap bitmap = face->glyph->bitmap;
 
-    LOGE("xxxxxxxxxxxxxxxxxxxxxxxxx\n");
-    LOGE("\n");
-    for (int y = 0; y < bitmap.rows; y++) {
-        for (int x = 0; x < bitmap.width; x++) {
-            uint8_t pixel = (bitmap.buffer[y * bitmap.pitch + (x >> 3)] >> (7 - (x % 8))) & 0x1;
-            log_message(pixel ? "⬛️ " : "⬜️ ");
-        }
-        flush_log();
-//        log_message("\n");
-    }
+//    LOGE("xxxxxxxxxxxxxxxxxxxxxxxxx\n");
+//    LOGE("\n");
+//    for (int y = 0; y < bitmap.rows; y++) {
+//        for (int x = 0; x < bitmap.width; x++) {
+//            uint8_t pixel = (bitmap.buffer[y * bitmap.pitch + (x >> 3)] >> (7 - (x % 8))) & 0x1;
+//            log_message(pixel ? "⬛️ " : "⬜️ ");
+//        }
+//        flush_log();
+//    }
 //    flush_log();
     LOGI("xxx1\n");
 
@@ -274,55 +283,31 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
     (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
     (*env)->SetObjectField(env, obj, bufferId, data);
 
-    /*char s[2048] = "";
-    int i, j, k, counter;
-    unsigned char temp;
-    for (j = 0; j < (font_size * 26) / 32 - face->glyph->bitmap_top; j++) {
-        for (i = 0; i < font_size; i++) {
-            strcat(s, "-");
+    // 获取字形对象
+    FT_GlyphSlot slot = face->glyph;
 
-        }
-        char *string1 = (char *) malloc(sizeof(char) * 16);
-        sprintf(string1, "%02d\n", j);
-        strcat(s, string1);
+    FT_Glyph glyph;
+
+    if (FT_Get_Glyph(slot,&glyph)) {
+        // 错误处理
+        LOGI("FT_Get_Glyph error!\n");
+        return NULL;
     }
+    // 获取边界框
+    FT_Glyph_Get_CBox(glyph, FT_GLYPH_BBOX_TRUNCATE, &bbox);
 
-    for (; j < face->glyph->bitmap.rows + (font_size * 26) / 32 - face->glyph->bitmap_top; j++) {
-        for (i = 1; i <= face->glyph->bitmap_left; i++) {
-            strcat(s, "-");
-        }
 
-        for (k = 0; k < face->glyph->bitmap.pitch; k++) {
-            temp = face->glyph->bitmap.buffer[face->glyph->bitmap.pitch *
-                                              (j + face->glyph->bitmap_top -
-                                               (font_size * 26) / 32) + k];
-            for (counter = 0; counter < 8; counter++) {
-                if (temp & 0x80) {
-                    strcat(s, "o");
-                } else {
-                    strcat(s, "-");
-                }
-                temp <<= 1;
-                i++;
-                if (i > font_size) {
-                    break;
-                }
-            }
-        }
+    jfieldID temp_jfieldID = (*env)->GetFieldID(env, clazz, "xMin", "I");
+    (*env)->SetIntField(env, obj, temp_jfieldID, bbox.xMax);
 
-        char *string1 = (char *) malloc(sizeof(char) * 16);
-        sprintf(string1, "%02d\n", j);
-        strcat(s, string1);
-    }
+    temp_jfieldID = (*env)->GetFieldID(env, clazz, "yMin", "I");
+    (*env)->SetIntField(env, obj, temp_jfieldID, bbox.yMin);
 
-    for (; j < font_size; j++) {
-        for (i = 0; i < font_size; i++) {
-            strcat(s, "-");
-        }
-        char *string1 = (char *) malloc(sizeof(char) * 16);
-        sprintf(string1, "%02d\n", j);
-        strcat(s, string1);
-    }
-    LOGI("%s\n", s);*/
+    temp_jfieldID = (*env)->GetFieldID(env, clazz, "xMax", "I");
+    (*env)->SetIntField(env, obj, temp_jfieldID, bbox.xMax);
+
+    temp_jfieldID = (*env)->GetFieldID(env, clazz, "yMax", "I");
+    (*env)->SetIntField(env, obj, temp_jfieldID, bbox.yMax);
+
     return obj;
 }
