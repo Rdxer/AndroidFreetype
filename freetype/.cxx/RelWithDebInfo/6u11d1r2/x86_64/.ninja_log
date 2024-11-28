@@ -44,3 +44,5 @@
 25	1974	1732694591	CMakeFiles/freetype.dir/src/main/jni/src/base/ftbase.c.o	eb29b7bddbd0995f
 470	2178	1732694591	CMakeFiles/freetype.dir/src/main/jni/src/truetype/truetype.c.o	5e1ec8d2a085c6d8
 2178	2307	1732694591	../../../../build/intermediates/cxx/RelWithDebInfo/6u11d1r2/obj/x86_64/libfreetype.so	108d668a3dacbf5c
+6	280	1732766831	CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o	c9d684f8e8d3084
+281	535	1732766832	../../../../build/intermediates/cxx/RelWithDebInfo/6u11d1r2/obj/x86_64/libfreetype.so	108d668a3dacbf5c

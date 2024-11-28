@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
 
         Log.e("TAG", ">>>>>>>>>> getWordInfoEx: " );
 
-        String str = "你好啊！蛤。\"蛤，";
+        String str = "你 好";
 
         for (int i = 0; i < str.length(); i++) {
             int codePointAt = str.codePointAt(i);
@@ -166,12 +166,18 @@ public class MainActivity extends AppCompatActivity {
         byte[] buffer = wordInfo.getBuffer();
         for (int y = 0; y < wordInfo.rows; y++) {
             for (int x = 0; x < wordInfo.width; x++) {
-
                 int pixel = (buffer[y * wordInfo.pitch + (x >> 3)] >> (7 - (x % 8))) & 0x1;
                 System.out.print(pixel != 0  ? "⬛️ " : "⬜️ ");
             }
             System.out.print("\n");
         }
+
+        if (wordInfo.rows == 0 || wordInfo.width == 0){
+            Log.e("TAG", "此字符无点阵");
+        }
+
+
+
     }
 
 
@@ -254,12 +260,19 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             isRequestPermissionOk = true;
-            //simsun.ttc   默认字体  如果想换字体，请用 WordManager.getInstance().init(this,字体路径);
-//            WordManager.getInstance().init(this);
-            String fontname = "Unifont点阵黑.ttf";
-//            "Alibaba-PuHuiTi-Bold.ttf"
-            WordManager.getInstance().initByAssets(this,fontname);
+            initMng();
         }
+    }
+
+    private   void initMng() {
+        //simsun.ttc   默认字体  如果想换字体，请用 WordManager.getInstance().init(this,字体路径);
+//            WordManager.getInstance().init(this);
+        String fontname = "Unifont点阵黑.ttf";
+//        fontname = "Alibaba-PuHuiTi-Bold.ttf";
+//        fontname = "Alibaba-PuHuiTi-Regular.ttf";
+
+
+        WordManager.getInstance().initByAssets(this,fontname);
     }
 
 
@@ -270,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 if (grantResults[i] == PERMISSION_GRANTED) {
                     requestPermissionsResult = "读写权限申请成功\n";
                     //simsun.ttc   默认字体  如果想换字体，请用 WordManager.getInstance().init(this,字体路径);
-                    WordManager.getInstance().init(this);
+                    initMng();
                     isRequestPermissionOk = true;
                 } else {
                     requestPermissionsResult = "读写权限申请失败\n";

@@ -1,2 +1,25 @@
 ninja: Entering directory `/Users/lxf/Documents/GitHub/AndroidFreetype/freetype/.cxx/RelWithDebInfo/6u11d1r2/x86'
-ninja: no work to do.
+[1/2] Building C object CMakeFiles/freetype.dir/src/main/jni/src/native-freetype.c.o
+../../../../src/main/jni/src/native-freetype.c:30:80: warning: unused parameter 'instance' [-Wunused-parameter]
+Java_com_xian_freetype_word_NdkFreeType_FT_1Init_1FreeType(JNIEnv *env, jclass instance,
+                                                                               ^
+../../../../src/main/jni/src/native-freetype.c:117:69: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+    (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
+                                                                    ^~~~~~~~~~~~~
+../../../../src/main/jni/src/native-freetype.c:53:81: warning: unused parameter 'instance' [-Wunused-parameter]
+Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info(JNIEnv *env, jclass instance,
+                                                                                ^
+../../../../src/main/jni/src/native-freetype.c:174:71: warning: unused parameter 'env' [-Wunused-parameter]
+Java_com_xian_freetype_word_NdkFreeType_FT_1Destroy_1FreeType(JNIEnv *env, jclass type) {
+                                                                      ^
+../../../../src/main/jni/src/native-freetype.c:174:83: warning: unused parameter 'type' [-Wunused-parameter]
+Java_com_xian_freetype_word_NdkFreeType_FT_1Destroy_1FreeType(JNIEnv *env, jclass type) {
+                                                                                  ^
+../../../../src/main/jni/src/native-freetype.c:284:73: warning: passing 'unsigned char *' to parameter of type 'const jbyte *' (aka 'const signed char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+        (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
+                                                                        ^~~~~~~~~~~~~
+../../../../src/main/jni/src/native-freetype.c:201:85: warning: unused parameter 'instance' [-Wunused-parameter]
+Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jclass instance,
+                                                                                    ^
+7 warnings generated.
+[2/2] Linking C shared library ../../../../build/intermediates/cxx/RelWithDebInfo/6u11d1r2/obj/x86/libfreetype.so

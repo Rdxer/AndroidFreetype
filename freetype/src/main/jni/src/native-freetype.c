@@ -229,13 +229,13 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
         return NULL;
     }
 
-    if (face->glyph->format != FT_GLYPH_FORMAT_BITMAP) {
-        error = FT_Render_Glyph(face->glyph, FT_RENDER_MODE_MONO);
-        if (error) {
-            LOGI("render char failed!\n");
-            return NULL;
-        }
-    }
+//    if (face->glyph->format != FT_GLYPH_FORMAT_BITMAP) {
+//        error = FT_Render_Glyph(face->glyph, FT_RENDER_MODE_MONO);
+//        if (error) {
+//            LOGI("render char failed!\n");
+//            return NULL;
+//        }
+//    }
 
     FT_Bitmap bitmap = face->glyph->bitmap;
 
@@ -278,10 +278,14 @@ Java_com_xian_freetype_word_NdkFreeType_FT_1GET_1Word_1Info_1ex(JNIEnv *env, jcl
     jfieldID top = (*env)->GetFieldID(env, clazz, "bitmap_top", "I");
     (*env)->SetIntField(env, obj, top, face->glyph->bitmap_top);
 
-    jbyteArray data = (*env)->NewByteArray(env, font_size * font_size);
-    jfieldID bufferId = (*env)->GetFieldID(env, clazz, "buffer", "[B");
-    (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
-    (*env)->SetObjectField(env, obj, bufferId, data);
+    if (bitmap.width != 0 && bitmap.rows != 0){
+        jbyteArray data = (*env)->NewByteArray(env, font_size * font_size);
+        jfieldID bufferId = (*env)->GetFieldID(env, clazz, "buffer", "[B");
+        (*env)->SetByteArrayRegion(env, data, 0, font_size * font_size, bitmap.buffer);
+        (*env)->SetObjectField(env, obj, bufferId, data);
+    }else{
+        LOGE("此文字点阵为空!\n");
+    }
 
     // 获取字形对象
     FT_GlyphSlot slot = face->glyph;
